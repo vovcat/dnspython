@@ -51,7 +51,7 @@ class TXTBase(dns.rdata.Rdata):
         """
         super().__init__(rdclass, rdtype)
         self.strings: Tuple[bytes] = self._as_tuple(
-            strings, lambda x: self._as_bytes(x, True, 255)
+            strings, lambda x: self._as_bytes(x, True, 511)
         )
         if len(self.strings) == 0:
             raise ValueError("the list of strings must not be empty")
@@ -88,7 +88,7 @@ class TXTBase(dns.rdata.Rdata):
                 token.is_quoted_string() or token.is_identifier()
             ):  # pragma: no cover
                 raise dns.exception.SyntaxError("expected a string")
-            if len(token.value) > 255:
+            if len(token.value) > 511:
                 raise dns.exception.SyntaxError("string too long")
             strings.append(token.value)
         if len(strings) == 0:
@@ -97,7 +97,7 @@ class TXTBase(dns.rdata.Rdata):
 
     def _to_wire(self, file, compress=None, origin=None, canonicalize=False):
         for s in self.strings:
-            with dns.renderer.prefixed_length(file, 1):
+            with dns.renderer.prefixed_length(file, 2):
                 file.write(s)
 
     @classmethod
