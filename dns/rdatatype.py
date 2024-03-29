@@ -108,6 +108,7 @@ class RdataType(dns.enum.IntEnum):
     RESINFO = 261
     TA = 32768
     DLV = 32769
+    WR = 32770
 
     @classmethod
     def _maximum(cls):
@@ -154,6 +155,7 @@ _singletons = {
     RdataType.DNAME,
     RdataType.NSEC,
     RdataType.CNAME,
+    RdataType.WR,
 }
 
 
@@ -330,5 +332,6 @@ AMTRELAY = RdataType.AMTRELAY
 RESINFO = RdataType.RESINFO
 TA = RdataType.TA
 DLV = RdataType.DLV
+WR = RdataType.WR
 
 ### END generated RdataType constants
