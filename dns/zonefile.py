@@ -54,7 +54,7 @@ def _check_cname_and_other_data(txn, name, rdataset):
         node_kind == dns.node.NodeKind.CNAME
         and rdataset_kind == dns.node.NodeKind.REGULAR
     ):
-        raise CNAMEAndOtherData("rdataset type is not compatible with a CNAME node")
+        raise CNAMEAndOtherData(f"rdataset type is not compatible with a CNAME node: {name} {rdataset}")
     elif (
         node_kind == dns.node.NodeKind.REGULAR
         and rdataset_kind == dns.node.NodeKind.CNAME

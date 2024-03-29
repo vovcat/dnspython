@@ -109,6 +109,7 @@ class RdataType(dns.enum.IntEnum):
     WALLET = 262
     TA = 32768
     DLV = 32769
+    WR = 32770
 
     @classmethod
     def _maximum(cls):
@@ -155,6 +156,7 @@ _singletons = {
     RdataType.DNAME,
     RdataType.NSEC,
     RdataType.CNAME,
+    RdataType.WR,
 }
 
 
@@ -332,5 +334,6 @@ RESINFO = RdataType.RESINFO
 WALLET = RdataType.WALLET
 TA = RdataType.TA
 DLV = RdataType.DLV
+WR = RdataType.WR
 
 ### END generated RdataType constants
